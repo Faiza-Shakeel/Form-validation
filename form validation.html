@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <div class="relative  h-screen flex justify-center items-center ">
+        <div class="form-box p-5 border border-gray-100 rounded-md shadow-lg">
+            <h1 class="text-center font-bold text-xl">Register</h1>
+            <div class="m-3">
+                <div>
+                    <p class="result text-red-700"> </p>
+                </div>
+             <input class="border-b mb-2   outline-none  " type="text" id="username" placeholder="username"><br>
+              <input class="border-b mb-2  outline-none " type="email" id="email" placeholder="email"><br>
+               <input class="border-b  mb-2  outline-none" type="password" id="password" placeholder="password"><br>
+                <input class="border-b  mb-2  outline-none" type="password" id="confirm_password" placeholder="confirm password"><br>
+              
+              <div class="flex justify-center ">  <button onclick="submitform()" class="bg-green-500 rounded-md text-white p-1 hover:bg-green-600 "type="submit">submit</button></div>
+             </div>
+        </div> 
+<div id="box" class="  hidden absolute border border-gray-300 shadow-md w-40 h-40 bg-white text-center m-"><h1 class="my-2">Registered successfully</h1>
+<button   onclick="alertbox()"  class="bg-green-500 rounded-md text-white px-2 py-1 hover:bg-green-600">OK</button></div>
+    </div>
+    
+    <script>
+        submitform=()=>{
+            let result = document.querySelector(".result");
+            let username = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm_password").value;
+
+            if(username===""){  
+            result.innerHTML ="ENTER USERNAME"
+            }
+            else if(email===""){
+            result.innerHTML ="ENTER EMAIL"
+            }
+            else if(password===""){ 
+            result.innerHTML ="ENTER PASSWORD"
+            }
+            else if(confirmPassword!==password){
+            result.innerHTML ="PASSWORD DIDN'T MATCH"
+        }
+            else{
+                result.innerHTML = "";
+                document.getElementById("box").classList.remove("hidden")
+            }
+        }
+        alertbox=()=>{
+            document.getElementById("box").classList.add("hidden")
+        }
+    </script>
+</body>
+</html>
